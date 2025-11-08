@@ -1,0 +1,18 @@
+spring:
+  cloud:
+    stream:
+      function:
+        definition: input
+      bindings:
+        output-out-0:
+          destination: my-topic
+          producer:
+            # 配置 rocketmq 地址
+            send-message-timeout: 3000
+        input-in-0:
+          destination: my-topic
+          group: my-group
+      rocketmq:
+        binder:
+          name-server: 192.168.11.11:9876     # 替换为你的RocketMQ NameServer地址
+          group: my-topic
